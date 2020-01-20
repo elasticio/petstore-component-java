@@ -30,6 +30,6 @@ uploadArchives {
     }
 }
 
-task wrapper(type: Wrapper) {
+wrapper {
     gradleVersion = '5.4.1'
 }
