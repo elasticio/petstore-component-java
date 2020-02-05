@@ -24,12 +24,15 @@ repositories {
     maven {
         url "https://oss.sonatype.org/content/repositories/snapshots"
     }
+    maven {
+    	url "https://oss.sonatype.org/content/repositories/ioelastic-1029"
+    }
     mavenCentral()
     mavenLocal()
 }
 
 dependencies {
-    compile "io.elastic:sailor-jvm:2.1.2-SNAPSHOT"
+    compile "io.elastic:sailor-jvm:2.1.2"
     compile "org.glassfish.jersey.core:jersey-client:2.25.1"
     compile "org.glassfish.jersey.media:jersey-media-json-processing:2.25.1"
 }
