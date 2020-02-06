@@ -5,21 +5,34 @@ apply plugin: 'eclipse'
 apply plugin: 'java-library-distribution'
 
 group = 'io.elastic'
-version = '1.0.0'
+version = '1.0.2'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+
+sourceSets {
+    main {
+        java.outputDir = file('build/classes/main')
+    }
+    test {
+        java.outputDir = file('build/classes/test')
+    }
+}
+
 repositories {
     maven {
         url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+    maven {
+    	url "https://oss.sonatype.org/content/repositories/ioelastic-1029"
     }
     mavenCentral()
     mavenLocal()
 }
 
 dependencies {
-    compile "io.elastic:sailor-jvm:2.0.1"
+    compile "io.elastic:sailor-jvm:2.1.2"
     compile "org.glassfish.jersey.core:jersey-client:2.25.1"
     compile "org.glassfish.jersey.media:jersey-media-json-processing:2.25.1"
 }
@@ -30,6 +43,6 @@ uploadArchives {
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
+wrapper {
+    gradleVersion = '5.4.1'
 }
