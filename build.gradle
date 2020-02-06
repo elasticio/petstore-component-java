@@ -11,14 +11,6 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 
-sourceSets {
-    main {
-        java.outputDir = file('build/classes/main')
-    }
-    test {
-        java.outputDir = file('build/classes/test')
-    }
-}
 
 repositories {
     maven {
