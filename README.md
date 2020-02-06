@@ -1,38 +1,53 @@
-# petstore-component-java
-> Petstore Java component template for the [elastic.io platform](http://www.elastic.io "elastic.io platform")
+# Petstore Component java
 
-This is a component template which we commonly refer as **the first step of the development** for creating a component to deploy into our platform. This component comes with a basic architecture which can be used on our platform. You can clone it and use it. However, **if you plan to deploy it into [elastic.io platform](https://www.elastic.io "elastic.io platform") you must follow sets of instructions to succeed**.
+## Description
 
-## Before you Begin
+A fully working and operational component template to use for starting development of your
+own component for the [elastic.io platform](http://www.elastic.io "elastic.io platform").
+This component comes with a basic architecture which you can use on the platform.
 
-Before you can deploy any code into our system **you must be a registered elastic.io platform user**. Please see our home page at [https://www.elastic.io](https://www.elastic.io) to learn how.
+The component interacts with the [petstore sample server](https://petstore.elastic.io/docs/).
 
-> Any attempt to deploy a code into our platform without a registration would be rejected.
+Our documentation on [building components in java](https://docs.elastic.io/guides/building-java-component.html) has more about each inlcuding file and their function.
 
-After the registration and opening of the account you must **[upload your SSH Key](http://go2.elastic.io/manage-ssh-keys)** into our platform.
+## Requirements
 
-> If you fail to upload you SSH Key you will get **permission denied** error during the deployment.
+To use this component you must be registered platform user. Please see our home
+page at [https://www.elastic.io](https://www.elastic.io) to learn how to register.
 
-## Getting Started
+### Authentication
 
-After registration and uploading of your SSH Key you can proceed to deploy it into our system. At this stage we suggest you to:
-* [Create a team](http://go2.elastic.io/manage-teams) to work on your new component. This is not required but will be automatically created using random naming by our system so we suggest you name your team accordingly.
-* [Create a repository](http://go2.elastic.io/manage-repositories) where your new component is going to *reside* inside the team that you have just created.
+To authenticate you use `secret` as an API key. For more details see the
+[Petstore API docs](https://petstore.elastic.io/docs/).
 
-```bash
-$ git clone https://github.com/elasticio/petstore-component-java.git your-repository
+## Triggers
 
-$ cd your-repository
-```
-Now you can edit your version of **petstore-component-java** component and build your desired component. Or you can just ``PUSH``it into our system to see the process in action:
+We have 3 triggers which `GET` the information from the `/pet` endpoint of the API.
+The difference is in the method used. Please explore the original code to learn
+about the differences. You are welcome to extend the capabilities as you fit.
 
-```bash
-$ git remote add elasticio your-team@git.elastic.io:your-repository.git
+### Get Pets By Status (HttpClient)
 
-$ git push elasticio master
-```
-Obviously the naming of your team and repository is entirely up-to you and if you do not put any corresponding naming our system will auto generate it for you but the naming might not entirely correspond to your project requirements.
+Retrieves pets from the Petstore API by given pet status using Apache HttpClient.
 
-## File Structure
+Here we have a configuration field `Pet Status` which can have only 3 values:
 
-The structure of **petstore-component-java** component is quite flexible. [elastic.io platform](https://www.elastic.io) expects only two files to be present in the main directory. These are the ``component.json`` and ``package.json``. Our documentation on [how to build a component in Java](http://go2.elastic.io/build-java-component) has more about each file and their function.
+*   `Available` - select to get all pets with status `Available`.
+*   `Pending` - select for `Pending`.
+*   `Sold` - select for `Sold`.
+
+### Get Pets By Status (JAX-RS)
+
+Retrieves pets from the Petstore API by given pet status using Java API for
+RESTful Web Services (JAX-RS). The configuration fields same as for above.
+
+### Get Pets By Status With Dynamic Select Model
+
+Retrieves pets from the Petstore API by given pet status. The available statuses
+are retrieved from the Petstore API dynamically.
+
+## Actions
+
+### Create a Pet
+
+Creates a new Pet.
