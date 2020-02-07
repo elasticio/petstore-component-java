@@ -8,7 +8,7 @@ This component comes with a basic architecture which you can use on the platform
 
 The component interacts with the [petstore sample server](https://petstore.elastic.io/docs/).
 
-Our documentation on [building components in java](https://docs.elastic.io/guides/building-java-component.html) has more about each inlcuding file and their function.
+Our documentation on [building components in java](https://docs.elastic.io/guides/building-java-component.html) has more about each including file and their function.
 
 ## Requirements
 
@@ -24,7 +24,7 @@ To authenticate you use `secret` as an API key. For more details see the
 
 We have 3 triggers which `GET` the information from the `/pet` endpoint of the API.
 The difference is in the method used. Please explore the original code to learn
-about the differences. You are welcome to extend the capabilities as you fit.
+about the differences. You are welcome to extend the capabilities as you see fit.
 
 ### Get Pets By Status (HttpClient)
 
@@ -44,10 +44,15 @@ RESTful Web Services (JAX-RS). The configuration fields same as for above.
 ### Get Pets By Status With Dynamic Select Model
 
 Retrieves pets from the Petstore API by given pet status. The available statuses
-are retrieved from the Petstore API dynamically.
+(`Available`, `Pending` and `Sold`) are retrieved from the Petstore API dynamically.
 
 ## Actions
 
 ### Create a Pet
 
-Creates a new Pet.
+Creates a new Pet by making a `POST` to `/pet` endpoint of the API. The input
+fields are:
+
+*   `petId` (required) - the Id of the pet.
+*   `name` - the name of the pet.
+*   `status` - the status which can have one `Available`, `Pending` and `Sold` values.
