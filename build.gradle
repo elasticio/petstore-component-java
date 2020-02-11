@@ -10,14 +10,21 @@ version = '1.0.2'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-
+sourceSets {
+    main {
+        java.outputDir = file('build/classes/main')
+    }
+    test {
+        java.outputDir = file('build/classes/test')
+    }
+}
 
 repositories {
     maven {
         url "https://oss.sonatype.org/content/repositories/snapshots"
     }
     maven {
-    	url "https://oss.sonatype.org/content/repositories/ioelastic-1029"
+    	url "https://repo1.maven.org/maven2"
     }
     mavenCentral()
     mavenLocal()
