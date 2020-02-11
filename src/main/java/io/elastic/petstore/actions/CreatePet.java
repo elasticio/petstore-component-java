@@ -27,8 +27,6 @@ public class CreatePet implements Module {
         // incoming message
         final Message message = parameters.getMessage();
 
-        logger.info("Incoming message: {}", message);
-
         // body contains the mapped data
         final JsonObject body = message.getBody();
 
