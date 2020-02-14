@@ -14,6 +14,28 @@
     "verifier": "io.elastic.petstore.ApiKeyVerifier"
   },
   "triggers": {
+    "initStartShutdownTrigger": {
+      "main": "io.elastic.petstore.triggers.InitStartShutdownTrigger",
+      "type": "polling",
+      "title": "Init Start Shutdown Test",
+      "description": "Retrieves pets from the Petstore API by given pet status using Apache HttpClient",
+      "fields": {
+        "status": {
+          "label": "Pet Status",
+          "required": true,
+          "viewClass": "SelectView",
+          "model": {
+            "available": "Available",
+            "pending": "Pending",
+            "sold": "Sold"
+          },
+          "prompt": "Select Pet Status"
+        }
+      },
+      "metadata": {
+        "out": "./schemas/getPetsByStatus.out.json"
+      }
+    },
     "getPetsByStatus": {
       "main": "io.elastic.petstore.triggers.GetPetsByStatus",
       "type": "polling",
