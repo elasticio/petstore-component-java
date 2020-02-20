@@ -17,7 +17,7 @@
     "initStartShutdownTrigger": {
       "main": "io.elastic.petstore.triggers.InitStartShutdownTrigger",
       "type": "polling",
-      "title": "Init Start Shutdown Test",
+      "title": "Init Start Shutdown Test Trigger",
       "description": "Retrieves pets from the Petstore API by given pet status using Apache HttpClient",
       "fields": {
         "status": {
