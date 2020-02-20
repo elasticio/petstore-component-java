@@ -17,7 +17,7 @@
     "initStartShutdownTrigger": {
       "main": "io.elastic.petstore.triggers.InitStartShutdownTrigger",
       "type": "polling",
-      "title": "Init Start Shutdown Test Trigger",
+      "title": "Init Start Shutdown Test (Sailor 3.0.0)",
       "description": "Retrieves pets from the Petstore API by given pet status using Apache HttpClient",
       "fields": {
         "status": {

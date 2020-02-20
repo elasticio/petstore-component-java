@@ -9,7 +9,7 @@ import javax.json.JsonObject;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 
-public class InitStartShutdownTrigger implements Module {
+public class InitStartShutdownTrigger implements Function {
 
     private static final Logger logger = LoggerFactory.getLogger(InitStartShutdownTrigger.class);
 
@@ -35,7 +35,7 @@ public class InitStartShutdownTrigger implements Module {
         logger.info("About to init the trigger");
         final JsonObject configuration = parameters.getConfiguration();
 
-        final JsonObject brownie = getBrownie(1, parameters.getConfiguration().getString("apiKey"));
+        final JsonObject brownie = getBrownie(1, configuration.getString("apiKey"));
 
         logger.info("Found {}", brownie);
 
