@@ -46,6 +46,7 @@ public class InitStartShutdownTrigger implements Function {
         logger.info("About to shut down the trigger");
 
         final JsonObject state = parameters.getState();
+        logger.info("State before shutdown: {}", state);
 
         final int id = state.getInt("id");
 
