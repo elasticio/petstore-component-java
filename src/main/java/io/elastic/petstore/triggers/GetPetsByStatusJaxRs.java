@@ -1,8 +1,8 @@
 package io.elastic.petstore.triggers;
 
 import io.elastic.api.ExecutionParameters;
+import io.elastic.api.Function;
 import io.elastic.api.Message;
-import io.elastic.api.Module;
 import io.elastic.petstore.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Trigger to get pets by status.
  */
-public class GetPetsByStatusJaxRs implements Module {
+public class GetPetsByStatusJaxRs implements Function {
     private static final Logger logger = LoggerFactory.getLogger(GetPetsByStatusJaxRs.class);
 
     /**

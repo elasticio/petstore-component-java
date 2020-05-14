@@ -1,8 +1,9 @@
 package io.elastic.petstore.actions;
 
 import io.elastic.api.ExecutionParameters;
+import io.elastic.api.Function;
+import io.elastic.api.InitParameters;
 import io.elastic.api.Message;
-import io.elastic.api.Module;
 import io.elastic.petstore.HttpClientUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,11 +14,11 @@ import javax.json.JsonString;
 /**
  * Action to create a pet.
  */
-public class CreatePet implements Module {
+public class CreatePet implements Function {
     private static final Logger logger = LoggerFactory.getLogger(CreatePet.class);
 
     @Override
-    public void init(JsonObject cfg) {
+    public void init(InitParameters cfg) {
         throw new RuntimeException("No exception on frontend");
     }
 
