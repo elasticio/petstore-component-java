@@ -2,6 +2,7 @@ package io.elastic.petstore.triggers;
 
 import io.elastic.api.ExecutionParameters;
 import io.elastic.api.Function;
+import io.elastic.api.InitParameters;
 import io.elastic.api.Message;
 import io.elastic.petstore.HttpClientUtils;
 import org.slf4j.Logger;
@@ -18,6 +19,11 @@ import javax.json.JsonString;
  */
 public class GetPetsByStatus implements Function {
     private static final Logger logger = LoggerFactory.getLogger(GetPetsByStatus.class);
+
+    @Override
+    public void init(InitParameters cfg) {
+        throw new RuntimeException("Tada! Init thrown exception");
+    }
 
     /**
      * Executes the trigger's logic by sending a request to the Petstore API and emitting response to the platform.
