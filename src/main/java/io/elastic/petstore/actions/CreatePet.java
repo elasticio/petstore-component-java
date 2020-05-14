@@ -16,6 +16,11 @@ import javax.json.JsonString;
 public class CreatePet implements Module {
     private static final Logger logger = LoggerFactory.getLogger(CreatePet.class);
 
+    @Override
+    public void init(JsonObject cfg) {
+        throw new RuntimeException('No exception on frontend');
+    }
+
     /**
      * Executes the actions's logic by sending a request to the Petstore API and emitting response to the platform.
      *
