@@ -18,7 +18,7 @@ public class CreatePet implements Module {
 
     @Override
     public void init(JsonObject cfg) {
-        throw new RuntimeException('No exception on frontend');
+        throw new RuntimeException("No exception on frontend");
     }
 
     /**
