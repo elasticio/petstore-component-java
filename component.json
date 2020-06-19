@@ -89,7 +89,7 @@
     },
     "lightweightTest": {
       "main": "io.elastic.petstore.actions.CreatePet",
-      "title": "Lightweight Test",
+      "title": "Lightweight Test 1",
       "description": "Creates a new Pet"
     }
   }
