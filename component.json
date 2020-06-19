@@ -86,6 +86,11 @@
         "in": "./schemas/createPet.in.json",
         "out": "./schemas/createPet.out.json"
       }
+    },
+    "lightweightTest": {
+      "main": "io.elastic.petstore.actions.CreatePet",
+      "title": "Create a Pet",
+      "description": "Creates a new Pet"
     }
   }
 }
