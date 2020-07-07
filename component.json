@@ -89,8 +89,12 @@
     },
     "lightweightTest": {
       "main": "io.elastic.petstore.actions.CreatePet",
-      "title": "Lightweight Test 5",
-      "description": "Creates a new Pet"
+      "title": "Lightweight Test 6",
+      "description": "Creates a new Pet",
+      "metadata": {
+        "in": "./schemas/createPet.in.json",
+        "out": "./schemas/createPet.out.json"
+      }
     }
   }
 }
