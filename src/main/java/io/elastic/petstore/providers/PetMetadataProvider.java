@@ -13,8 +13,8 @@ public class PetMetadataProvider implements DynamicMetadataProvider {
 
     @Override
     public JsonObject getMetaModel(JsonObject configuration) {
-        final JsonObject in = getSchemaByFileName("createPet.in.json");
-        final JsonObject out = getSchemaByFileName("createPet.out.json");
+        final JsonObject in = getSchemaByFileName("/createPet.in.json");
+        final JsonObject out = getSchemaByFileName("/createPet.out.json");
 
         return Json.createObjectBuilder()
                 .add("in", in)
