@@ -86,6 +86,12 @@
         "in": "./schemas/createPet.in.json",
         "out": "./schemas/createPet.out.json"
       }
+    },
+    "dynamicMetadataCreatePet": {
+      "main": "io.elastic.petstore.actions.CreatePet",
+      "title": "Create a Pet (Dynamic Metadata)",
+      "description": "Creates a new Pet",
+      "dynamicMetadata": "io.elastic.petstore.providers.PetMetadataProvider"
     }
   }
 }
