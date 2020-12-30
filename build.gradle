@@ -21,7 +21,7 @@ sourceSets {
 
 repositories {
     maven {
-        url "https://oss.sonatype.org/content/repositories/ioelastic-1031"
+        url "https://oss.sonatype.org/content/repositories/ioelastic-1032"
     }
     maven {
         url "https://oss.sonatype.org/content/repositories/snapshots"
@@ -34,7 +34,8 @@ repositories {
 }
 
 dependencies {
-    compile "io.elastic:sailor-jvm:3.0.0"
+//    compile "io.elastic:sailor-jvm:3.3.1"
+    compile "io.elastic:sailor-jvm:3.3.2-SNAPSHOT"
     compile "org.glassfish.jersey.core:jersey-client:2.25.1"
     compile "org.glassfish.jersey.media:jersey-media-json-processing:2.25.1"
 }

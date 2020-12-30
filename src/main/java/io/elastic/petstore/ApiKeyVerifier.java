@@ -20,11 +20,18 @@ public class ApiKeyVerifier implements CredentialsVerifier {
     @Override
     public void verify(final JsonObject configuration) throws InvalidCredentialsException {
         logger.info("About to verify the provided API key by retrieving the user");
-        try {
-            final JsonObject user = HttpClientUtils.getSingle("/user/me", configuration);
-            logger.info("User {} successfully retrieved. Credentials are valid", user.getString("username"));
-        } catch (Exception e) {
-            throw new InvalidCredentialsException("Failed to verify credentials", e);
-        }
+        logger.info("======="+configuration.getString("apiKey"));
+        logger.info("=======2"+configuration.getString("apiKeyTwo"));
+        logger.info("=======3"+configuration.getString("apiKeyThree"));
+     if (configuration.getString("apiKey").equals("one")) {
+         throw new InvalidCredentialsException("Failed to verify credentials because of blablab");
+     }
+     if (configuration.getString("apiKey").equals("two")) {
+         return;
+     }
+     if (configuration.getString("apiKey").equals("four")) {
+         throw new RuntimeException("Failed to verify credentials because of ti blablablbal");
+     }
+            logger.info("User {} successfully retrieved. Credentials are valid");
     }
 }
