@@ -4,12 +4,6 @@
   "docsUrl": "https://github.com/elasticio/petstore-component-java",
   "credentials": {
     "fields": {
-      "apiKey": {
-        "label": "API key",
-        "required": true,
-        "viewClass": "TextFieldWithNoteView",
-        "note": "Please use <b>elasticio</b> as API key. For more details see <a href='https://petstore.elastic.io/docs/' target='_blank'>Petstore API docs</a>."
-      },
       "auth": {
         "required": false,
         "viewClass": "WebhookAuthView"
