@@ -26,6 +26,7 @@ public class CreatePet implements Function {
         logger.info("About to create new pet");
         // incoming message
         final Message message = parameters.getMessage();
+        System.out.println("===" + message.toString());
 
         // body contains the mapped data
         final JsonObject body = message.getBody();
@@ -35,15 +36,15 @@ public class CreatePet implements Function {
         final String originalUrl = message.getOriginalUrl();
 
         logger.info("==========================");
-        logger.info("body: ", body);
+        logger.info("body: " + body.toString());
         logger.info("==========================");
-        logger.info("query: ", query);
+        logger.info("query: " + query.toString());
         logger.info("==========================");
-        logger.info("method: ", method);
+        logger.info("method: " + method.toString());
         logger.info("==========================");
-        logger.info("url: ", url);
+        logger.info("url: " + url.toString());
         logger.info("==========================");
-        logger.info("originalUrl: ", originalUrl);
+        logger.info("originalUrl: " + originalUrl.toString());
         logger.info("==========================");
 
         // contains action's configuration
