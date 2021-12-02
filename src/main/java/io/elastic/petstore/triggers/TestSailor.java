@@ -31,15 +31,15 @@ public class TestSailor implements Function {
         final String originalUrl = message.getOriginalUrl();
 
         logger.info("==========================");
-        logger.info("body: ", body1);
+        logger.info("body: " + body1.toString());
         logger.info("==========================");
-        logger.info("query: ", query);
+        logger.info("query: " + query.toString());
         logger.info("==========================");
-        logger.info("method: ", method);
+        logger.info("method: " + method);
         logger.info("==========================");
-        logger.info("url: ", url);
+        logger.info("url: " + url);
         logger.info("==========================");
-        logger.info("originalUrl: ", originalUrl);
+        logger.info("originalUrl: " + originalUrl);
         logger.info("==========================");
 
     }
