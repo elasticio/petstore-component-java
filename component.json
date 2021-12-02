@@ -14,6 +14,17 @@
     "verifier": "io.elastic.petstore.ApiKeyVerifier"
   },
   "triggers": {
+    "testSailor": {
+      "main": "io.elastic.petstore.triggers.TestSailor",
+      "type": "webhook",
+      "title": "Try sailor 3.3.7",
+      "description": "Bla bla bla",
+      "fields": {
+      },
+      "metadata": {
+        "out": "./schemas/getPetsByStatus.out.json"
+      }
+    },
     "getPetsByStatus": {
       "main": "io.elastic.petstore.triggers.GetPetsByStatus",
       "type": "polling",

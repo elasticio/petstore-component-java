@@ -29,6 +29,22 @@ public class CreatePet implements Function {
 
         // body contains the mapped data
         final JsonObject body = message.getBody();
+        final JsonObject query = message.getQuery();
+        final String method = message.getMethod();
+        final String url = message.getUrl();
+        final String originalUrl = message.getOriginalUrl();
+
+        logger.info("==========================");
+        logger.info("body: ", body);
+        logger.info("==========================");
+        logger.info("query: ", query);
+        logger.info("==========================");
+        logger.info("method: ", method);
+        logger.info("==========================");
+        logger.info("url: ", url);
+        logger.info("==========================");
+        logger.info("originalUrl: ", originalUrl);
+        logger.info("==========================");
 
         // contains action's configuration
         final JsonObject configuration = parameters.getConfiguration();
