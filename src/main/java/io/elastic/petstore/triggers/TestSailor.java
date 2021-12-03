@@ -31,8 +31,8 @@ public class TestSailor implements Function {
         final String originalUrl = message.getOriginalUrl();
 
         logger.info("Entire message: " + message);
-        logger.info("body: " + body.toString());
-        logger.info("query: " + query.toString());
+        logger.info("body: " + body);
+        logger.info("query: " + query);
         logger.info("method: " + method);
         logger.info("url: " + url);
         logger.info("originalUrl: " + originalUrl);
