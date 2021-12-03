@@ -35,43 +35,23 @@ public class CreatePet implements Function {
         final String url = message.getUrl();
         final String originalUrl = message.getOriginalUrl();
 
-        logger.info("==========================");
+        logger.info("Entire message: " + message);
         logger.info("body: " + body.toString());
-        logger.info("==========================");
         logger.info("query: " + query.toString());
-        logger.info("==========================");
-        logger.info("method: " + method.toString());
-        logger.info("==========================");
-        logger.info("url: " + url.toString());
-        logger.info("==========================");
-        logger.info("originalUrl: " + originalUrl.toString());
-        logger.info("==========================");
+        logger.info("method: " + method);
+        logger.info("url: " + url);
+        logger.info("originalUrl: " + originalUrl);
 
-        // contains action's configuration
-        final JsonObject configuration = parameters.getConfiguration();
-
-        // access the value of the mapped value into name field of the in-metadata
-        final JsonString name = body.getJsonString("name");
-        if (name == null) {
-            throw new IllegalStateException("Name is required");
-        }
-
-        // access the value of the mapped value into name field of the in-metadata
-        final JsonString status = body.getJsonString("status");
-        if (status == null) {
-            throw new IllegalStateException("Status is required");
-        }
-
-        final JsonObject pet = HttpClientUtils.post("/pet", configuration, body);
-
-        logger.info("Pet successfully created");
+        JsonObject result = Json.createObjectBuilder()
+            .add("body", body)
+            .add("query", query)
+            .add("method", method)
+            .add("url", url)
+            .add("originalUrl", originalUrl)
+            .build();
 
         final Message data
-                = new Message.Builder().body(pet).build();
-
-        logger.info("Emitting data");
-
-        // emitting the message to the platform
+            = new Message.Builder().body(result).build();
         parameters.getEventEmitter().emitData(data);
     }
 }

@@ -24,23 +24,29 @@ public class TestSailor implements Function {
 
         final Message message = parameters.getMessage();
 
-        final JsonObject body1 = message.getBody();
+        final JsonObject body = message.getBody();
         final JsonObject query = message.getQuery();
         final String method = message.getMethod();
         final String url = message.getUrl();
         final String originalUrl = message.getOriginalUrl();
 
-        logger.info("==========================");
-        logger.info("body: " + body1.toString());
-        logger.info("==========================");
+        logger.info("Entire message: " + message);
+        logger.info("body: " + body.toString());
         logger.info("query: " + query.toString());
-        logger.info("==========================");
         logger.info("method: " + method);
-        logger.info("==========================");
         logger.info("url: " + url);
-        logger.info("==========================");
         logger.info("originalUrl: " + originalUrl);
-        logger.info("==========================");
 
+        JsonObject result = Json.createObjectBuilder()
+            .add("body", body)
+            .add("query", query)
+            .add("method", method)
+            .add("url", url)
+            .add("originalUrl", originalUrl)
+            .build();
+
+        final Message data
+            = new Message.Builder().body(result).build();
+        parameters.getEventEmitter().emitData(data);
     }
 }

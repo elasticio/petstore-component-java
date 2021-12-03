@@ -30,48 +30,29 @@ public class GetPetsByStatus implements Function {
 
         final Message message = parameters.getMessage();
 
-        final JsonObject body1 = message.getBody();
+        final JsonObject body = message.getBody();
         final JsonObject query = message.getQuery();
         final String method = message.getMethod();
         final String url = message.getUrl();
         final String originalUrl = message.getOriginalUrl();
 
-        logger.info("==========================");
-        logger.info("body: ", body1);
-        logger.info("==========================");
-        logger.info("query: ", query);
-        logger.info("==========================");
-        logger.info("method: ", method);
-        logger.info("==========================");
-        logger.info("url: ", url);
-        logger.info("==========================");
-        logger.info("originalUrl: ", originalUrl);
-        logger.info("==========================");
+        logger.info("Entire message: " + message);
+        logger.info("body: " + body.toString());
+        logger.info("query: " + query.toString());
+        logger.info("method: " + method);
+        logger.info("url: " + url);
+        logger.info("originalUrl: " + originalUrl);
 
-        // access the value of the status field defined in trigger's fields section of component.json
-        final JsonString status = configuration.getJsonString("status");
-        if (status == null) {
-            throw new IllegalStateException("status field is required");
-        }
-        logger.info("About to find pets by status {}", status.getString());
-
-        final String path = "/pet/findByStatus?status=" + status.getString();
-
-        final JsonArray pets = HttpClientUtils.getMany(path, configuration);
-
-        logger.info("Got {} pets", pets.size());
-
-        // emitting naked arrays is forbidden by the platform
-        final JsonObject body = Json.createObjectBuilder()
-                .add("pets", pets)
-                .build();
+        JsonObject result = Json.createObjectBuilder()
+            .add("body", body)
+            .add("query", query)
+            .add("method", method)
+            .add("url", url)
+            .add("originalUrl", originalUrl)
+            .build();
 
         final Message data
-                = new Message.Builder().body(body).build();
-
-        logger.info("Emitting data");
-
-        // emitting the message to the platform
+            = new Message.Builder().body(result).build();
         parameters.getEventEmitter().emitData(data);
     }
 }
