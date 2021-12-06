@@ -7,6 +7,7 @@ import io.elastic.petstore.HttpClientUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonString;
 
