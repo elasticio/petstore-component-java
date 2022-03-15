@@ -6,6 +6,13 @@ apply plugin: 'java-library-distribution'
 
 group = 'io.elastic'
 
+task downloadDependencies() {
+    description 'Download all dependencies to the Gradle cache'
+    doLast {
+        configurations.findAll { it.canBeResolved }.files
+    }
+}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
