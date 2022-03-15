@@ -1,2 +1,3 @@
-## 1.0.3 (February 25, 2022)
+## 1.0.3 (March 16, 2022)
 * Updated the sailor version to 3.3.8
+* Add a component pusher to Docker hub
