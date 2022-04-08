@@ -2,7 +2,7 @@
   "title": "Petstore API (Java)",
   "description": "elastic.io component for the Petstore API",
   "docsUrl": "https://github.com/elasticio/petstore-component-java",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "credentials": {
     "fields": {
       "apiKey": {
