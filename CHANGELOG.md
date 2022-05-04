@@ -1,4 +1,4 @@
-## 1.0.5 (April 22, 2022)
+## 1.0.5 (May 6, 2022)
 * Add an automated vulnerability check
 
 ## 1.0.4 (April 08, 2022)
