@@ -86,6 +86,9 @@ jobs:
           paths:
             - ~/.gradle/caches
             - ~/.gradle/wrapper
+      - run:
+          name: Audit Dependencies
+          command: ./gradlew dependencyCheckAnalyze -PrunWithDependencyCheck
   build:
     docker:
       - image: cimg/base:stable

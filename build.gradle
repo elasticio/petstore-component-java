@@ -3,7 +3,17 @@ apply plugin: 'groovy'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'java-library-distribution'
-apply plugin: org.owasp.dependencycheck.gradle.DependencyCheckPlugin
+if (hasProperty('runWithDependencyCheck')) {
+    apply plugin: org.owasp.dependencycheck.gradle.DependencyCheckPlugin
+
+    check.dependsOn dependencyCheckAnalyze
+
+    dependencyCheck {
+        format = 'HTML'
+        failBuildOnCVSS = 7
+        suppressionFile='./dependencyCheck-suppression.xml'
+    }
+}
 
 group = 'io.elastic'
 
@@ -49,26 +59,15 @@ uploadArchives {
     }
 }
 
-check.dependsOn dependencyCheckAnalyze
-
-dependencyCheck {
-    format = 'ALL'
-    // Dependency Check script will fail in case there are critical (9.0-10.0) vulnerabilities.
-    // It should be configured to 7 (high and critical), but so far is not possible as 'axis' library
-    // and log4j issues which does not have any updates that solve the problem
-    failBuildOnCVSS = 7
-    suppressionFile='./dependencyCheck-suppression.xml'
-}
-
 buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.owasp:dependency-check-gradle:6.0.3'
+        classpath 'org.owasp:dependency-check-gradle:7.1.0.1'
     }
 }
 
 wrapper {
-    gradleVersion = '5.4.1'
+    gradleVersion = '7.4.2'
 }
