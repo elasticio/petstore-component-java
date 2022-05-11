@@ -1,3 +1,6 @@
+## 1.0.6 (May 11, 2022)
+* Made an automated vulnerability check run in CI/CD
+
 ## 1.0.5 (May 6, 2022)
 * Add an automated vulnerability check
 
