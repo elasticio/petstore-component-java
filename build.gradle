@@ -32,8 +32,8 @@ repositories {
 
 dependencies {
     compile "io.elastic:sailor-jvm:4.0.0-SNAPSHOT"
-    compile "org.glassfish.jersey.core:jersey-client:2.25.1"
-    compile "org.glassfish.jersey.media:jersey-media-json-processing:2.25.1"
+    compile "org.glassfish.jersey.core:jersey-client:2.39"
+    compile "org.glassfish.jersey.media:jersey-media-json-processing:2.39"
 }
 
 uploadArchives {
