@@ -6,7 +6,7 @@ import io.elastic.petstore.HttpClientUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.json.*;
+import jakarta.json.*;
 
 /**
  * Implementation of {@link SelectModelProvider} providing a select model for the pet status select.
