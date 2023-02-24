@@ -15,7 +15,7 @@
     "verifier": "io.elastic.petstore.ApiKeyVerifier"
   },
   "triggers": {
-    "getPetsByStatus": {
+    "getPetsByStatus&*%": {
       "main": "io.elastic.petstore.triggers.GetPetsByStatus",
       "type": "polling",
       "title": "Get Pets By Status (HttpClient)",
