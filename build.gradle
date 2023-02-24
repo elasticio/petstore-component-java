@@ -29,10 +29,10 @@ targetCompatibility = 1.8
 
 sourceSets {
     main {
-        java.outputDir = file('build/classes/main')
+        java.getDestinationDirectory().set(file('build/classes/main'))
     }
     test {
-        java.outputDir = file('build/classes/test')
+        java.getDestinationDirectory().set(file('build/classes/test'))
     }
 }
 
@@ -48,15 +48,9 @@ repositories {
 }
 
 dependencies {
-    compile "io.elastic:sailor-jvm:3.3.9"
-    compile "org.glassfish.jersey.core:jersey-client:2.25.1"
-    compile "org.glassfish.jersey.media:jersey-media-json-processing:2.25.1"
-}
-
-uploadArchives {
-    repositories {
-        mavenLocal()
-    }
+    implementation "io.elastic:sailor-jvm:4.0.0"
+    implementation "org.glassfish.jersey.core:jersey-client:2.25.1"
+    implementation "org.glassfish.jersey.media:jersey-media-json-processing:2.25.1"
 }
 
 buildscript {
@@ -69,5 +63,5 @@ buildscript {
 }
 
 wrapper {
-    gradleVersion = '5.4.1'
+    gradleVersion = '7.5.1'
 }
