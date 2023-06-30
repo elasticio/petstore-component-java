@@ -41,14 +41,14 @@ repositories {
         url "https://oss.sonatype.org/content/repositories/snapshots"
     }
     maven {
-    	url "https://repo1.maven.org/maven2"
+        url "https://repo1.maven.org/maven2"
     }
     mavenCentral()
     mavenLocal()
 }
 
 dependencies {
-    implementation "io.elastic:sailor-jvm:4.0.0"
+    implementation "io.elastic:sailor-jvm:4.0.1-SNAPSHOT"
     implementation "org.glassfish.jersey.core:jersey-client:2.25.1"
     implementation "org.glassfish.jersey.media:jersey-media-json-processing:2.25.1"
 }
