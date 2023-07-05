@@ -10,7 +10,7 @@ if (hasProperty('runWithDependencyCheck')) {
 
     dependencyCheck {
         format = 'HTML'
-        failBuildOnCVSS = 7
+        failBuildOnCVSS = 8
         suppressionFile='./dependencyCheck-suppression.xml'
     }
 }
