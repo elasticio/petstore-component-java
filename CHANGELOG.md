@@ -1,3 +1,6 @@
+## 1.0.7 (July 07, 2023)
+* Bumped Sailor to 4.0.1
+
 ## 1.0.6 (May 11, 2022)
 * Made an automated vulnerability check run in CI/CD
 

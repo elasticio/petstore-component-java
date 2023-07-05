@@ -48,7 +48,7 @@ repositories {
 }
 
 dependencies {
-    implementation "io.elastic:sailor-jvm:4.0.1-SNAPSHOT"
+    implementation "io.elastic:sailor-jvm:4.0.1"
     implementation "org.glassfish.jersey.core:jersey-client:2.25.1"
     implementation "org.glassfish.jersey.media:jersey-media-json-processing:2.25.1"
 }
