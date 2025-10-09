@@ -49,7 +49,7 @@ repositories {
 
 dependencies {
 //    implementation "io.elastic:sailor-jvm:4.0.1"
-    implementation files("./lib/sailor-jvm-4.0.4-SNAPSHOT.11.jar")
+    implementation files("./lib/sailor-jvm-4.0.4-SNAPSHOT.12.jar")
     implementation "org.glassfish.jersey.core:jersey-client:2.25.1"
     implementation "org.glassfish.jersey.media:jersey-media-json-processing:2.25.1"
 }
