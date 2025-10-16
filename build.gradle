@@ -31,6 +31,7 @@ targetCompatibility = 1.8
 sourceSets {
     main {
         java.getDestinationDirectory().set(file('build/classes/main'))
+        resources.srcDirs += ['lib'] // Add this line
     }
     test {
         java.getDestinationDirectory().set(file('build/classes/test'))
