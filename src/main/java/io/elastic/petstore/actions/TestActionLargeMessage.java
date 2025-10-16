@@ -6,13 +6,17 @@ import io.elastic.api.Message;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
+import jakarta.json.JsonException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.BufferedReader; // New import
+import java.io.InputStreamReader; // New import
+import java.nio.charset.StandardCharsets;
+
 
 public class TestActionLargeMessage implements Function {
 
@@ -20,19 +24,40 @@ public class TestActionLargeMessage implements Function {
 
     @Override
     public void execute(final ExecutionParameters parameters) {
-        try {
-            final String jsonFilePath = "/Users/pavlovoropaiev/work/elastic/coding/petstore-component-java/lib/employees_5MB.json";
-            final String largeJsonString = new String(Files.readAllBytes(Paths.get(jsonFilePath)));
+        final String resourcePath = "lib/employees_5MB.json"; // Changed to resource path
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream(resourcePath)) {
+            if (is == null) {
+                throw new IOException("Resource not found: " + resourcePath);
+            }
+            LOG.info("Attempting to read JSON from resource: {}", resourcePath);
+
+            StringBuilder sb = new StringBuilder();
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                }
+            }
+            final String largeJsonString = sb.toString(); // Read from InputStream using BufferedReader
+
+            LOG.info("Successfully read resource. Content length: {} bytes", largeJsonString.length());
+
             final JsonObject largeJson = parseJsonString(largeJsonString);
 
-            LOG.info("Successfully loaded JSON message from file: {}", jsonFilePath);
+            LOG.info("Successfully parsed JSON message from resource: {}", resourcePath);
 
             final Message data = new Message.Builder().body(largeJson).build();
             parameters.getEventEmitter().emitData(data);
 
         } catch (IOException e) {
-            LOG.error("An error occurred during JSON loading or parsing", e);
-            throw new RuntimeException(e.getMessage());
+            LOG.error("An IOException occurred while reading the resource {}: {}", resourcePath, e.getMessage(), e);
+            throw new RuntimeException("Failed to read JSON resource: " + resourcePath, e);
+        } catch (JsonException e) { // Catch JsonException for parsing errors
+            LOG.error("A JsonException occurred while parsing the JSON from resource {}: {}", resourcePath, e.getMessage(), e);
+            throw new RuntimeException("Failed to parse JSON from resource: " + resourcePath, e);
+        } catch (Exception e) { // Catch any other unexpected exceptions
+            LOG.error("An unexpected error occurred: {}", e.getMessage(), e);
+            throw new RuntimeException("An unexpected error occurred", e);
         }
     }
 
