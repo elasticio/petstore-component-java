@@ -7,6 +7,8 @@ import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import jakarta.json.JsonException;
+import jakarta.json.stream.JsonParser;
+import jakarta.json.stream.JsonParser.Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,7 +65,23 @@ public class TestActionLargeMessage implements Function {
 
     private JsonObject parseJsonString(String jsonString) {
         try (JsonReader jsonReader = Json.createReader(new StringReader(jsonString))) {
-            return jsonReader.readObject();
+            // Peek at the first event to determine if it's an object or an array
+            jakarta.json.stream.JsonParser parser = Json.createParser(new StringReader(jsonString));
+            if (parser.hasNext()) {
+                jakarta.json.stream.JsonParser.Event event = parser.next();
+                if (event == jakarta.json.stream.JsonParser.Event.START_ARRAY) {
+                    // It's an array, read it as an array and wrap it in an object
+                    jakarta.json.JsonArray jsonArray = jsonReader.readArray();
+                    return Json.createObjectBuilder().add("employees", jsonArray).build();
+                } else if (event == jakarta.json.stream.JsonParser.Event.START_OBJECT) {
+                    // It's an object, read it as an object
+                    return jsonReader.readObject();
+                } else {
+                    throw new JsonException("Unexpected JSON event: " + event);
+                }
+            } else {
+                throw new JsonException("Empty JSON string");
+            }
         }
     }
 }
