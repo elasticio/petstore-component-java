@@ -46,6 +46,10 @@ public class TestActionLargeMessage implements Function {
 
             final JsonObject largeJson = parseJsonString(largeJsonString);
 
+            // Log the size of the JsonObject when serialized back to a string
+            String serializedLargeJson = largeJson.toString();
+            LOG.info("Serialized JsonObject size: {} bytes", serializedLargeJson.getBytes(StandardCharsets.UTF_8).length);
+
             LOG.info("Successfully parsed JSON message from resource: {}", resourcePath);
 
             final Message data = new Message.Builder().body(largeJson).build();
@@ -70,9 +74,16 @@ public class TestActionLargeMessage implements Function {
             if (parser.hasNext()) {
                 jakarta.json.stream.JsonParser.Event event = parser.next();
                 if (event == jakarta.json.stream.JsonParser.Event.START_ARRAY) {
-                    // It's an array, read it as an array and wrap it in an object
-                    jakarta.json.JsonArray jsonArray = jsonReader.readArray();
-                    return Json.createObjectBuilder().add("employees", jsonArray).build();
+                    jakarta.json.JsonArray originalJsonArray = jsonReader.readArray();
+                    jakarta.json.JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+                    // Add the original array elements five times to get approximately 10MB
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    jakarta.json.JsonArray quintupledJsonArray = arrayBuilder.build();
+                    return Json.createObjectBuilder().add("employees", quintupledJsonArray).build();
                 } else if (event == jakarta.json.stream.JsonParser.Event.START_OBJECT) {
                     // It's an object, read it as an object
                     return jsonReader.readObject();
