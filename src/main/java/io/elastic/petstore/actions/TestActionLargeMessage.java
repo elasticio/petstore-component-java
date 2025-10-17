@@ -76,14 +76,34 @@ public class TestActionLargeMessage implements Function {
                 if (event == jakarta.json.stream.JsonParser.Event.START_ARRAY) {
                     jakarta.json.JsonArray originalJsonArray = jsonReader.readArray();
                     jakarta.json.JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-                    // Add the original array elements five times to get approximately 10MB
+                    // Add the original array elements twenty-five times to get approximately 50MB
                     originalJsonArray.forEach(arrayBuilder::add);
                     originalJsonArray.forEach(arrayBuilder::add);
                     originalJsonArray.forEach(arrayBuilder::add);
                     originalJsonArray.forEach(arrayBuilder::add);
                     originalJsonArray.forEach(arrayBuilder::add);
-                    jakarta.json.JsonArray quintupledJsonArray = arrayBuilder.build();
-                    return Json.createObjectBuilder().add("employees", quintupledJsonArray).build();
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    originalJsonArray.forEach(arrayBuilder::add);
+                    jakarta.json.JsonArray vigintupledJsonArray = arrayBuilder.build();
+                    return Json.createObjectBuilder().add("employees", vigintupledJsonArray).build();
                 } else if (event == jakarta.json.stream.JsonParser.Event.START_OBJECT) {
                     // It's an object, read it as an object
                     return jsonReader.readObject();
