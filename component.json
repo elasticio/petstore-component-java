@@ -2,7 +2,7 @@
   "title": "Petstore API (Java)",
   "description": "elastic.io component for the Petstore API",
   "docsUrl": "https://github.com/elasticio/petstore-component-java",
-  "version": "1.0.8-dev.19",
+  "version": "1.0.8-dev.20",
   "credentials": {
     "fields": {
       "apiKey": {
@@ -79,23 +79,6 @@
     }
   },
   "actions": {
-    "TestActionProduceLargeMessage": {
-      "main": "io.elastic.petstore.actions.TestActionLargeMessage",
-      "description": "Test Action Produce Large Message",
-      "title": "Test Action Produce Large Message (to reproduce 408)"
-    },
-    "TestActionLargeAmountSmallMessages": {
-      "main": "io.elastic.petstore.actions.TestActionLargeAmountSmallMessages",
-      "description": "Test Action Produce Large Amount of Messages",
-      "title": "Test Action Produce Large Amount of Messages",
-      "fields": {
-        "numberOfMessages": {
-          "label": "Number of messages",
-          "required": true,
-          "viewClass": "TextFieldView"
-        }
-      }
-    },
     "createPet": {
       "main": "io.elastic.petstore.actions.CreatePet",
       "title": "Create a Pet",
