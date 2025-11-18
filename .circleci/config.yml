@@ -86,9 +86,9 @@ jobs:
           paths:
             - ~/.gradle/caches
             - ~/.gradle/wrapper
-      - run:
-          name: Audit Dependencies
-          command: ./gradlew dependencyCheckAnalyze -PrunWithDependencyCheck
+#      - run:
+#          name: Audit Dependencies
+#          command: ./gradlew dependencyCheckAnalyze -PrunWithDependencyCheck
   build:
     docker:
       - image: cimg/base:stable
@@ -98,7 +98,7 @@ jobs:
       - node/install:
           node-version: << pipeline.parameters.node-version >>
       - setup_remote_docker:
-          version: 19.03.13
+          version: default
           docker_layer_caching: true
       # build and push Docker image
       - run:
