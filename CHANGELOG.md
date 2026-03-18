@@ -1,3 +1,6 @@
+## 1.0.9 (March 18, 2026)
+* Update Sailor to 5.0.1
+
 ## 1.0.8 (November 18, 2025)
 * Update Sailor to 5.0.0
 
